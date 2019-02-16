@@ -1,8 +1,9 @@
 var cnt = 1;
 var q = -1;
 start();
-
-function buttonClick(){
+let press = document.getElementById("maybe");
+let p = document.getElementById("enter");
+p.onclick = function buttonClick(){
     var text = document.getElementById("userInput").value;
     document.getElementById("userInput").value = "";
     if(text.length > 0) {
@@ -71,7 +72,7 @@ function Alive(){
     }
 }
 
-function Die(){
+press.onclick = function Die(){
     let b = Math.floor(Math.random()*20);
     // create array of murphy laws
     let ar = new Array(20)

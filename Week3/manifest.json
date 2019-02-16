@@ -1,9 +1,10 @@
 {
     "name": "JokerDC",
-    "version": "1.0",
+    "version": "1.2",
     "chrome_url_overrides" : {
        "newtab": "main.html"
      },
-    "manifest_version": 2
+    "manifest_version": 2,
+    "content_security_policy": "script-src 'self' https://code.jquery.com; object-src 'self'"
   }
  
