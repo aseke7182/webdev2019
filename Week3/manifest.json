@@ -1,0 +1,9 @@
+{
+    "name": "JokerDC",
+    "version": "1.0",
+    "chrome_url_overrides" : {
+       "newtab": "main.html"
+     },
+    "manifest_version": 2
+  }
+ 

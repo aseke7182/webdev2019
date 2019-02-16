@@ -1,0 +1,135 @@
+*{
+    font-family: Eater;
+    color: rgb(152,0,2); 
+    cursor: pointer;
+    outline: none;
+}
+body {
+    background-image: url("http://www.wallpapermaiden.com/image/2016/09/18/heath-ledger-joker-monochrome-batman-movies-6104.jpg");
+    background-repeat: no-repeat;
+    background-color: rgb(34, 31, 31);
+
+}
+
+p {
+    color: rgb(152,0,2);
+    font-size: 40px;
+    margin-left: 150px;
+    font-family: Eater;
+}
+
+
+
+
+
+
+.Write {
+    margin-left: 20%;   
+}
+
+#enter {
+    background-color: transparent;
+    font-size: 18px;
+    width: 100px;
+    border-radius: 5px;
+    border: 0px solid black ;
+}
+
+#userInput {
+    border-radius: 3px;
+    border: 1px ridge transparent;
+    font-size: 18px;
+    margin-left: -100px;
+    background-color: transparent;
+}
+
+#userInput:hover{
+    border: 1px ridge transparent;
+}
+
+.no {
+    text-decoration: line-through;
+}
+
+#row {
+    margin-top: 50px;
+}
+
+.del{
+    border-radius: 5px;
+    border: 0px solid black;
+    background-color: transparent;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.checkbox {
+    height: 25px;
+    width: 25px;
+    margin-top: 17px;
+    margin-left: 20px;
+    /*content: "\2714";*/
+
+}
+
+
+
+#row div {
+    display: block;
+    float: left;
+}
+
+#row p {
+    font-size: 16px;
+    width: 300px;
+    margin-left : 20px; 
+}
+
+.task {
+    border : 1px solid transparent;
+    width : 50%;
+}
+
+#die,#maybe {
+    font-size: 16px;
+    margin-left: 200px;
+    width: 400px;
+}
+
+#time {
+    font-size: 30px;
+    position: fixed;
+    top: 35px;
+    right: 50px;
+}
+#year {
+    font-size: 30px;
+    position: fixed;
+    top: 0px;
+    right: 50px;
+}
+
+.J p{
+    font-size: 20px;   
+    transform: rotate(15deg);
+    border: dashed;
+    position: fixed;
+    right: 20px;
+    top: 40%;
+}
+
+#ha {
+    font-size: 20px;   
+    transform: rotate(15deg);
+    border: dashed;
+    position: fixed;
+    right: 160px;
+    top: 60%;
+}
+
+#Serious {
+    position: fixed;
+    bottom: 0px;
+    left: 40%;
+    color: rgba(152, 0, 3, 0.582); 
+}
