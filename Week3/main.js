@@ -108,9 +108,8 @@ press.onclick = function Die(){
     var sec = now.getSeconds();
     let hours = now.getHours();
     let mo = now.getMonth();
-    if(mo == 1){
-        mo = "February";
-    }
+    let months = ["January", "February", "March" , "April" , "May" , "June" , "Jule" , "August", "September" , "October" , "November" , "December" ,"KTL"];
+    mo = months[mo];
     console.log(mo);
     const year = now.getFullYear();
     let p = document.getElementById("time");

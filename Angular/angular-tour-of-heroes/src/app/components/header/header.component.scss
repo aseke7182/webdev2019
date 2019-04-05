@@ -1,0 +1,125 @@
+header{
+    background: black;
+    display: flex;
+    justify-content: space-around;
+    height: 60px;
+    width: 100%;
+    position: fixed;  
+    align-items: center; 
+    z-index: 999;
+}
+
+#logo{
+    font-size: 22px;
+}
+
+header img{
+    height: 50px;
+    width: 250px;
+    margin-left: 0;
+}
+
+header a{
+    text-decoration: none;
+    color: red;
+}
+
+nav a{
+    margin: 0px 25px;
+    letter-spacing: 2px;
+}
+
+#LogoImage{
+    height: 40%;
+    width: 100%;
+}
+
+.hello{
+    padding: 180px 10%;
+    font-size: 100px;
+    color: goldenrod;
+    display: flex;
+    justify-content: space-around;
+}
+
+
+#ortasininayagi{
+    font-size: 50px;
+}
+
+input[type="radio"] {
+    -ms-transform: scale(2.9); /* IE 9 */
+    -webkit-transform: scale(2.9); /* Chrome, Safari, Opera */
+    transform: scale(2.9);
+    margin-left: 45%;
+}
+
+.Ortasi{
+    margin-left: 15%;
+    color: goldenrod;
+    font-size: 70px;
+}
+.Ortasi div{
+    padding-bottom: 120px;
+}
+.Ortasi p{
+    text-align: left;
+    margin: 15px 0px;
+}
+
+.i{
+    width: 450px;
+    margin-left: 35px;
+}
+
+.table  {
+    width: 65%;
+    margin-left: 10%;
+    border: 5px solid snow;
+}
+
+.table th{
+    color: brown;
+    text-align: center;
+    border: 5px solid snow;
+}
+
+.table td {
+    height: 140px;
+    border: 5px solid snow;
+    
+}
+.table input[type="radio"]{
+    margin-left: 20%;
+    margin-right: 50px;
+}
+
+.a{
+    width: 300px;
+    height: 250px;
+}
+
+.RAM td, .block td{
+    width:350px;
+}
+
+.RAM{
+    margin-bottom: 0px;
+}
+input[type="button"]{
+    width: 500px;
+    height: 100px;
+    margin-left: 25%;
+    border-radius: 15px;
+    background-color: rgb(0, 255, 0);
+    border: 0px;
+    color: white;
+    font-size: 70px;
+    font:inherit;
+}
+
+.navigation{
+    display: flex;
+    position: fixed;
+    margin-top: 20%;
+}
