@@ -13,7 +13,7 @@ export class BackService extends MainService  {
   constructor(http: HttpClient) {
     super(http);
   }
-  
+
   getTaskList(): Promise<TaskList[]>{
     return this.get('http://127.0.0.1:8000/api/task_lists',{});
   }
@@ -21,3 +21,4 @@ export class BackService extends MainService  {
     return this.get(`http://127.0.0.1:8000/api/task_lists/${id}/tasks/`,{});
   }
 }
+
