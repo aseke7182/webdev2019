@@ -1,10 +1,10 @@
 <div *ngFor="let t of task_lists" (click) = "getTask(t)">
-  {{t.id}} : {{t.name}}
+  {{t.id}} . {{t.name}}
 </div>
 <div *ngFor = "let t of tasks">
   ID: {{t.id}} <br>
   NAME: {{t.name}} <br>
-  CREATED AT: {{t.create_at}} <br>
+  CREATED AT: {{t.created_at}} <br>
   DUE ON: {{t.due_on}} <br> 
   STATUS: {{t.status}} <br>
   <br>
