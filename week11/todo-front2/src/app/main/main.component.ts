@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Task,TaskList} from '../models/models';
 import {ProviderService} from '../services/provider.service';
+import { now } from 'moment';
 
 @Component({
   selector: 'app-main',
@@ -10,6 +11,7 @@ import {ProviderService} from '../services/provider.service';
 export class MainComponent implements OnInit {
   public task_lists: TaskList[] = [];
   public tasks: Task[] = [] ;
+  public now = 0;
 
   constructor( private  provider: ProviderService) { }
 
@@ -18,8 +20,12 @@ export class MainComponent implements OnInit {
       this.task_lists = res;
     });
   }
-  getTask(taskList: TaskList) {
-    this.provider.getTasks(taskList.id).then( res =>{
+
+  ChangeTask(TaskList: TaskList){
+    this.now = TaskList.id;
+  }
+  getTask() {
+    this.provider.getTasks(this.now).then( res =>{
       this.tasks = res;
     });
   }
