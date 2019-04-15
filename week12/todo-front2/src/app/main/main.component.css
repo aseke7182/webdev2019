@@ -1,0 +1,46 @@
+@import url("./reset.css");
+
+h1{
+    display: flex;
+    justify-content: center;
+    font-size: 70px;
+    padding: 5%;
+    font-weight: bolder;
+    color: goldenrod;
+}
+
+.task_lists{
+    font-size: 50px;
+    padding-bottom: 1%;
+    display: flex;
+    font-weight: bold;
+    justify-content: center;
+    color: whitesmoke;
+}
+
+.tasks{
+    /* border: 1px solid greenyellow; */
+    /* color: rgb(65, 64, 64) ; */
+    color: goldenrod;
+    font-size: 30px;
+    display: flex;
+    padding-top: 2% ;
+    justify-content: center;
+    letter-spacing: 1px;
+}
+
+.button {
+  outline: none;
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  /* display: inline-block; */
+  font-size: 20px;
+  /* margin: 4px 2px; */
+  cursor: pointer;
+  margin-top: 3%;
+  margin-left: 45%;
+}

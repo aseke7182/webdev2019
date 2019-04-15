@@ -3,18 +3,18 @@ from django.shortcuts import render
 from api.models import Task,TaskList
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from api.serializers import TaskListSerializer,TaskListSerializer2,TasksSerializer
+from api.serializers import TaskListSerializer,TasksSerializer
 
 
 @csrf_exempt
 def task_lists(request):
     if request.method == 'GET':
         task_lists = TaskList.objects.all()
-        serializer = TaskListSerializer2(task_lists,many=True)
+        serializer = TaskListSerializer(task_lists,many=True)
         return JsonResponse(serializer.data,safe=False)
     elif request.method =='POST':
         data = json.loads(request.body)
-        serializer = TaskListSerializer2(data=data)
+        serializer = TaskListSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
             return JsonResponse(serializer.data)
@@ -45,9 +45,6 @@ def task_lists_info(request,pk):
 
 
 
-
-# DOESN'T WORK
-# NEED TO FIX IT
 @csrf_exempt
 def tasks(request,pk):
     try:
@@ -57,8 +54,8 @@ def tasks(request,pk):
 
     if request.method == 'GET':
         tasks =  task_lists_info.task_set.all()
-        serializer = TasksSerializer(tasks)
-        return JsonResponse(serializer.data)
+        serializer = TasksSerializer(tasks,many=True)
+        return JsonResponse(serializer.data,safe=False)
     elif request.method == 'POST':
         data = json.loads(request.body)
         serializer = TasksSerializer(data=data)

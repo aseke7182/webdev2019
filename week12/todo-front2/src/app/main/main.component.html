@@ -1,0 +1,14 @@
+
+<h1>To Do List</h1>
+  <div *ngFor="let t of task_lists" class = "task_lists" (click) = "ChangeTask(t)">
+    {{t.id}} . {{t.name}}
+  </div>
+  <button (click)="getTask()" class = "button"> Get  Task </button>
+  <div *ngFor = "let t of tasks" class="tasks">
+    ID: {{t.id}} <br>
+    NAME: {{t.name}} <br>
+    CREATED AT: {{t.created_at}} <br>
+    DUE ON: {{t.due_on}} <br> 
+    STATUS: {{t.status}} <br>
+  <br>
+</div>
