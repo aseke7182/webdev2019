@@ -1,9 +1,16 @@
-
 <h1>To Do List</h1>
   <div *ngFor="let t of task_lists" class = "task_lists" (click) = "ChangeTask(t)">
     {{t.id}} . {{t.name}}
   </div>
-  <button (click)="getTask()" class = "button"> Get  Task </button>
+  <div class="ChangeTask">
+    <input type="text" placeholder="Name of Task" id="newName">
+    <button (click)="updateTaskList()" class="button">Change Task</button>
+    <button (click)="createTaskList()" class="button"> Add Task</button>
+  </div>
+  <div class="GetTask">
+    <button (click)="getTask()" class = "button"> Get  Task </button>
+    <button (click)="deleteTaskList()" class="button">Delete Task</button>
+  </div>
   <div *ngFor = "let t of tasks" class="tasks">
     ID: {{t.id}} <br>
     NAME: {{t.name}} <br>
