@@ -40,4 +40,11 @@ export class ProviderService extends MainService {
   deleteTaskinTask(id1:number,id2:number): Promise<Task>{
     return this.delet(`http://127.0.0.1:8000/api/task_lists/${id1}/tasks/${id2}`,{});
   }
+  updateTaskinTask(newname:any,status:any,id:number,id2:number): Promise<Task>{
+    return this.put(`http://127.0.0.1:8000/api/task_lists/${id}/tasks/${id2}`,{
+      name: newname,
+      status: status,
+      task_list: id
+    })
+  }
 }

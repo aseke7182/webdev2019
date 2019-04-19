@@ -77,4 +77,12 @@ def taskInfo(request,pk,pk2):
         task = taskInfo.task_set.get(id=pk2)
         task.delete()
         return JsonResponse({},safe=False)
+    elif request.method == 'PUT':
+        data = json.loads(request.body)
+        task = taskInfo.task_set.get(id=pk2)
+        serializer = TasksSerializer(instance= task,data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data)
+        return JsonResponse(serializer.error)
     return JsonResponse({'Error':'bad request'})

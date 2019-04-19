@@ -27,3 +27,12 @@ class TasksSerializer(serializers.ModelSerializer):
     def create(self,data):
         t = data.pop('task_list') 
         return Task.objects.create(task_list=t,**data)
+    
+    def update(self,instance,data):
+        instance.name = data.get('name',instance.name)
+        instance.created_at = data.get('created_at',instance.created_at)
+        instance.due_on = data.get('due_on',instance.due_on)
+        instance.status = data.get('status',instance.status)
+        instance.task_list = data.get('task_list',instance.task_list)
+        instance.save()
+        return instance

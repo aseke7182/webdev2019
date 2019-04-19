@@ -54,6 +54,10 @@ export class MainComponent implements OnInit {
       this.provider.getTaskLists().then(r =>{
         this.task_lists = r;
       })
+    }
+    )
+    this.provider.getTasks(this.now).then(rr =>{
+      this.tasks = rr;
     })
   }
 
@@ -97,5 +101,14 @@ export class MainComponent implements OnInit {
         this.tasks = r;
       })
     })
+  }
+  updateTask(task: Task){ 
+    if(task.name!=='' && task.status!==''){
+      this.provider.updateTaskinTask(task.name,task.status,this.now,task.id).then(res =>{
+        this.provider.getTasks(this.now).then(r =>{
+          this.tasks = r;
+        })
+      })
+    }
   }
 }
