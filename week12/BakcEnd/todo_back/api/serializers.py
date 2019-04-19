@@ -17,11 +17,13 @@ class TaskListSerializer(serializers.Serializer):
  
 
 class TasksSerializer(serializers.ModelSerializer):
-
+    id = serializers.IntegerField(read_only=True)
+    # task_list = TaskListSerializer(read_only=True)
+    
     class Meta:
         model = Task
         fields = ('id','name','created_at','due_on','status','task_list')
     
     def create(self,data):
-        t = data.pop('task_list')
-        return Task.objects.create(task_list=t, **data)
+        t = data.pop('task_list') 
+        return Task.objects.create(task_list=t,**data)

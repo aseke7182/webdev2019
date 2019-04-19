@@ -30,9 +30,14 @@ export class ProviderService extends MainService {
       name: newname
     });
   }
-
-  createTaskinTask(Task:Task): Promise<Task>{
-    return this.post(`http://127.0.0.1:8000/api/task_lists/1/tasks`,Task)
+  createTaskinTask(newname:any,status:any,id:number): Promise<Task>{
+    return this.post(`http://127.0.0.1:8000/api/task_lists/${id}/tasks`,{
+      name: newname,
+      status: status,
+      task_list: id
+    })
   }
-
+  deleteTaskinTask(id1:number,id2:number): Promise<Task>{
+    return this.delet(`http://127.0.0.1:8000/api/task_lists/${id1}/tasks/${id2}`,{});
+  }
 }

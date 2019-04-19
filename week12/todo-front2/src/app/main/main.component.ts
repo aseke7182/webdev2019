@@ -13,6 +13,8 @@ export class MainComponent implements OnInit {
   public tasks: Task[] = [] ;
   public now = 0 ;
   public name: any = '';
+  public taskname: any = '';
+  public status: any = '';
 
   constructor( private  provider: ProviderService) { }
 
@@ -26,6 +28,16 @@ export class MainComponent implements OnInit {
     (<HTMLInputElement>document.getElementById('newName')).value = '';
     return x;
   }
+  getStatus(){
+    let x = (<HTMLInputElement>document.getElementById('status')).value;
+    (<HTMLInputElement>document.getElementById('status')).value = '';
+    return x;
+  }
+  getToDo(){
+    let x = (<HTMLInputElement>document.getElementById('todo')).value;
+    (<HTMLInputElement>document.getElementById('todo')).value = '';
+    return x;
+  }
   ChangeTask(TaskList: TaskList){
     this.now = TaskList.id;
     (<HTMLInputElement>document.getElementById('newName')).value = TaskList.name;
@@ -35,6 +47,7 @@ export class MainComponent implements OnInit {
       this.tasks = res;
     });
   }
+
   deleteTaskList(){
     this.getNewName()
     this.provider.deleteTask(this.now).then(res=>{
@@ -65,7 +78,24 @@ export class MainComponent implements OnInit {
     }
   }
 
-  // createTask(){
-  //   this.provider.createTaskinTask(this.tasks).then
-  // }
+  createTask(){
+    this.taskname = this.getToDo();
+    this.status = this.getStatus();
+    // console.log(this.taskname+ " " + status+" "+now);
+    this.provider.getTasks(this.now).then( res =>{
+      this.provider.createTaskinTask(this.taskname,this.status,this.now).then(r =>{
+        this.taskname = '';
+        this.status = '';
+        res.push(r);
+        this.tasks = res;
+      })
+    })
+  }
+  deleleteTask(task: Task){
+    this.provider.deleteTaskinTask(this.now,task.id).then(res =>{
+      this.provider.getTasks(this.now).then(r =>{
+        this.tasks = r;
+      })
+    })
+  }
 }

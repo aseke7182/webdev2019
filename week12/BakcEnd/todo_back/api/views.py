@@ -66,3 +66,15 @@ def tasks(request,pk):
     return JsonResponse({'error':'bad request'})
 
 
+@csrf_exempt
+def taskInfo(request,pk,pk2):
+    try:
+        taskInfo = TaskList.objects.get(id=pk)
+    except TaskList.DoesNotExist as e:
+        return JsonResponse({'Error':str(e)},safe=False)
+
+    if request.method == 'DELETE':
+        task = taskInfo.task_set.get(id=pk2)
+        task.delete()
+        return JsonResponse({},safe=False)
+    return JsonResponse({'Error':'bad request'})
