@@ -1,7 +1,4 @@
 from django.db import models
-from datetime import datetime
-from datetime import timedelta
-# Create your models here.
 
 class TaskList(models.Model):
     name = models.CharField(max_length = 200)
