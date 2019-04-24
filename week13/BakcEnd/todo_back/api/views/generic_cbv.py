@@ -1,35 +1,43 @@
 from rest_framework import generics
-from rest_framework.permissions import IsAuthenticated
 from django.shortcuts import get_object_or_404
-
+from rest_framework.permissions import IsAuthenticated
 from api.models import TaskList, Task
-from api.serializers import TaskListSerializer,TasksSerializer
+from api.serializers import TaskListSerializer, TasksSerializer, UserSerializer
 
 
 class TaskListList(generics.ListCreateAPIView):
-    queryset = TaskList.objects.all()
+    permission_classes = (IsAuthenticated,)
     serializer_class = TaskListSerializer
+
+    def get_queryset(self):
+        return TaskList.objects.for_user(self.request.user)
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
 
 
 class TaskListInfo(generics.RetrieveUpdateDestroyAPIView):
-    queryset = TaskList.objects.all()
+    permission_classes = (IsAuthenticated,)
     serializer_class = TaskListSerializer
+
+    def get_queryset(self):
+        return TaskList.objects.for_user(self.request.user)
 
 
 class TasksList(generics.ListCreateAPIView):
+    permission_classes = (IsAuthenticated,)
+    serializer_class = TasksSerializer
+
     def get_queryset(self):
-        return Task.objects.all()
-        # return Task.objects.filter(task_list=self.kwargs['pk'])
-
-    def get_serializer_class(self):
-        return TasksSerializer
+        tasklist = get_object_or_404(TaskList, id=self.kwargs.get('pk'))
+        return tasklist.task_set.filter(task_list__owner=self.request.user)
 
 
-#Doesn't work ... Need To Fix It
 class TaskInfo(generics.RetrieveUpdateDestroyAPIView):
-    def get_queryset(self):
-        return Task.objects.filter(task_list=self.kwargs['pk2'])
-        # return Task.objects.filter(id=self.kwargs['pk'], task_list=self.kwargs['pk2'])
+    permission_classes = (IsAuthenticated,)
+    serializer_class = TasksSerializer
+    lookup_url_kwarg = 'pk2'
 
-    def get_serializer_class(self):
-        return TasksSerializer
+    def get_queryset(self):
+        tasklist = get_object_or_404(TaskList, id=self.kwargs.get('pk'))
+        return tasklist.task_set.filter(task_list__owner=self.request.user)
