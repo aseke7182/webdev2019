@@ -10,3 +10,7 @@ export interface Task {
     due_on: Date;
     status: string;
 }
+
+export interface Auth{
+    token: string;
+}

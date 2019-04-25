@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Task,TaskList} from '../models/models';
+import {Task,TaskList,Auth} from '../models/models';
 import {HttpClient} from '@angular/common/http';
 import {MainService} from './main.service';
 @Injectable({
@@ -46,5 +46,14 @@ export class ProviderService extends MainService {
       status: status,
       task_list: id
     })
+  }
+  login(username: any, password: any):Promise<Auth>{
+    return this.post('http://127.0.0.1:8000/api/login',{
+        username: username,
+        password: password
+    })
+  }
+  logout(): Promise<any>{
+    return this.post('http://127.0.0.1:8000/api/logout',{})
   }
 }

@@ -15,13 +15,24 @@ export class MainComponent implements OnInit {
   public name: any = '';
   public taskname: any = '';
   public status: any = '';
+  public logged = false;
+  public username: any = '';
+  public password: any = '';
 
   constructor( private  provider: ProviderService) { }
 
   ngOnInit() {
-    this.provider.getTaskLists().then(res => {
-      this.task_lists = res;
-    });
+
+    const token = localStorage.getItem('token');
+    if( token ){
+      this.logged = true;
+    }
+
+    if(this.logged){
+      this.provider.getTaskLists().then(res => {
+        this.task_lists = res;
+      });
+    }
   }
   getNewName(){
     let x = (<HTMLInputElement>document.getElementById('newName')).value;
@@ -111,4 +122,24 @@ export class MainComponent implements OnInit {
       })
     }
   }
+  login(){
+    if(this.username!=='' && this.password!==''){
+      this.provider.login(this.username,this.password).then(res =>{
+        localStorage.setItem('token',res.token);
+        this.logged=true 
+        this.provider.getTaskLists().then(r => {
+          this.task_lists = r;
+        });
+      });
+    }
+  }
+  logout(){
+    this.provider.logout().then(res=>{
+      localStorage.clear();
+      this.username = '';
+      this.password = '';
+      this.logged = false;
+    })
+  }
+
 }

@@ -1,12 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ClassProvider } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import {ProviderService} from './services/provider.service';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
+import {Auth} from './Auth';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,12 @@ import {FormsModule} from '@angular/forms';
     FormsModule
   ],
   providers: [
-    ProviderService
+    ProviderService,
+    <ClassProvider> {
+      provide: HTTP_INTERCEPTORS,
+      useClass: Auth,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
