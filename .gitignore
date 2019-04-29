@@ -73,6 +73,7 @@ coverage.xml
 
 /Project/
 /TeamQ/
+/Quiz/
 # Sphinx documentation
 docs/_build/
 
