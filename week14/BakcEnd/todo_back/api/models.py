@@ -18,8 +18,5 @@ class Task(models.Model):
     created_at = models.DateTimeField(auto_now=True)
     due_on = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=200)
-    task_list = models.ForeignKey(TaskList, on_delete=models.CASCADE)
+    task_list = models.ForeignKey(TaskList, on_delete=models.CASCADE, related_name='task', default=1)
 
-# class TaskListManager(models.Manager):
-#     def for_user(self, user):
-#         return self.filter(created_by=user)
